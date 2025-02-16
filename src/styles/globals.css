@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 0 0 0;
+  }
+
+  .dark {
+    --background: 0 0 0;
+    --foreground: 255 255 255;
+  }
+}
+
+@layer utilities {
+  .bg-background {
+    @apply bg-[rgb(var(--background))];
+  }
+  .text-foreground {
+    @apply text-[rgb(var(--foreground))];
+  }
+}
+
+/* Smooth transitions for theme changes */
+* {
+  @apply transition-colors duration-200;
+}
+
+body {
+  @apply bg-background min-h-screen antialiased;
+}
+
+/* Improved scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  @apply w-2 bg-content1;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-content3 rounded-full;
+}
+
+/* Better focus outlines */
+:focus-visible {
+  @apply outline-2 outline-focus outline-offset-2 rounded-lg;
+}
